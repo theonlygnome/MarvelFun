@@ -22,6 +22,7 @@
 		B3C4F8082ABE85B100E75C7D /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4F8072ABE85B100E75C7D /* Comic.swift */; };
 		B3C4F80A2ABF095B00E75C7D /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4F8092ABF095B00E75C7D /* Event.swift */; };
 		B3C4F80C2ABF0B2300E75C7D /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4F80B2ABF0B2300E75C7D /* EventView.swift */; };
+		B3C4F80F2ABF207500E75C7D /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3C4F80E2ABF207500E75C7D /* Configuration.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		B3C4F8072ABE85B100E75C7D /* Comic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
 		B3C4F8092ABF095B00E75C7D /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		B3C4F80B2ABF0B2300E75C7D /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
+		B3C4F80E2ABF207500E75C7D /* Configuration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,8 @@
 			isa = PBXGroup;
 			children = (
 				B3C4F8002ABE673100E75C7D /* Info.plist */,
+				B3C4F80E2ABF207500E75C7D /* Configuration.plist */,
+				B3C4F80D2ABF1AD500E75C7D /* controller */,
 				B3C4F7F82ABE30D400E75C7D /* model */,
 				B3C4F7F92ABE30E100E75C7D /* view */,
 				B3C4F7D02ABE308F00E75C7D /* Assets.xcassets */,
@@ -148,7 +152,6 @@
 		B3C4F7F82ABE30D400E75C7D /* model */ = {
 			isa = PBXGroup;
 			children = (
-				B3C4F7F62ABE30CE00E75C7D /* ConnectionManager.swift */,
 				B3C4F7FA2ABE36B000E75C7D /* Character.swift */,
 				B3C4F7FC2ABE3AE900E75C7D /* String.swift */,
 				B3C4F8072ABE85B100E75C7D /* Comic.swift */,
@@ -167,6 +170,14 @@
 				B3C4F80B2ABF0B2300E75C7D /* EventView.swift */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		B3C4F80D2ABF1AD500E75C7D /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				B3C4F7F62ABE30CE00E75C7D /* ConnectionManager.swift */,
+			);
+			path = controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +284,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3C4F80F2ABF207500E75C7D /* Configuration.plist in Resources */,
 				B3C4F7D42ABE308F00E75C7D /* Preview Assets.xcassets in Resources */,
 				B3C4F7D12ABE308F00E75C7D /* Assets.xcassets in Resources */,
 			);

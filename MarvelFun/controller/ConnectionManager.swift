@@ -16,23 +16,16 @@ class ConnectionManager: ObservableObject {
     private let limit = 20
     
     let baseURL = "https://gateway.marvel.com:443/v1/public/characters"
-    let publicAPIKey = "e2719ae4bb577096eccd880b3764a76a"
-    
-    // Hard code in the hash for right now; calculated using https://www.md5hashgenerator.com
-    let hash = "148b6d3244e70bf5f8840cdcc1529639"
-    
-    
+
     func loadMoreCharacters() {
         fetchCharacterData()
     }
     
     func fetchCharacterData() {
-        //md5(ts+privateKey+publicKey)
-        //let hashString = "1"+privateAPIKey+publicAPIKey
-        //let md5Hash = hashString.MD5
-        
+               
         let offset = page * limit
-        let urlString = "\(baseURL)?ts=1&apikey=\(publicAPIKey)&hash=\(hash)&offset=\(offset)"
+        let urlString = "\(baseURL)?ts=1&apikey=\(publicKey())&hash=\(md5Hash())&offset=\(offset)"
+        
         print(urlString)
         if let url = URL(string: urlString) {
             let session = URLSession(configuration: .default)
@@ -44,8 +37,8 @@ class ConnectionManager: ObservableObject {
                             let results = try decoder.decode(CharacterResults.self, from: safeData)
                             DispatchQueue.main.async {
                                 // TODO: Remove debug print statements
-                                print(results.data.count)
-                                print(results.data.results)
+                                // print(results.data.count)
+                                // print(results.data.results)
                                 for result in results.data.results {
                                     self.characterResults.append(result)
                                 }
@@ -63,11 +56,8 @@ class ConnectionManager: ObservableObject {
     
     
     func fetchComicData(_ id: Int) {
-        //md5(ts+privateKey+publicKey)
-        //let hashString = "1"+privateAPIKey+publicAPIKey
-        //let md5Hash = hashString.MD5
-        
-        let urlString = "\(baseURL)/\(String(id))/comics?ts=1&apikey=\(publicAPIKey)&hash=\(hash)"
+
+        let urlString = "\(baseURL)/\(String(id))/comics?ts=1&apikey=\(publicKey())&hash=\(md5Hash())"
         print(urlString)
         if let url = URL(string: urlString) {
             let session = URLSession(configuration: .default)
@@ -94,11 +84,8 @@ class ConnectionManager: ObservableObject {
     }
     
     func fetchEventData(_ id: Int) {
-        //md5(ts+privateKey+publicKey)
-        //let hashString = "1"+privateAPIKey+publicAPIKey
-        //let md5Hash = hashString.MD5
         
-        let urlString = "\(baseURL)/\(String(id))/events?ts=1&apikey=\(publicAPIKey)&hash=\(hash)"
+        let urlString = "\(baseURL)/\(String(id))/events?ts=1&apikey=\(publicKey())&hash=\(md5Hash())"
         print(urlString)
         if let url = URL(string: urlString) {
             let session = URLSession(configuration: .default)
@@ -122,5 +109,45 @@ class ConnectionManager: ObservableObject {
             }
             task.resume()
         }
+    }
+    
+    func configurationPlist() -> [String: Any]? {
+        var config: [String: Any]?
+                
+        if let infoPlistPath = Bundle.main.url(forResource: "Configuration", withExtension: "plist") {
+            do {
+                let infoPlistData = try Data(contentsOf: infoPlistPath)
+                
+                if let dict = try PropertyListSerialization.propertyList(from: infoPlistData, options: [], format: nil) as? [String: Any] {
+                    config = dict
+                }
+            } catch {
+                print(error)
+            }
+        }
+
+        return config
+    }
+    
+    // MD5 hash is hard coded in the configuration plist; calculated using https://www.md5hashgenerator.com
+    // md5 = "1"+privateAPIKey+publicAPIKey
+    func md5Hash() -> String {
+        if let config = configurationPlist() {
+            if let hash = config["md5 hash"] as? String {
+                return hash
+            }
+        }
+        // Should probably be an error
+        return "0";
+    }
+    
+    func publicKey() -> String {
+        if let config = configurationPlist() {
+            if let publicKey = config["Public Key"] as? String {
+                return publicKey
+            }
+        }
+        // Should be an error
+        return "0"
     }
 }
