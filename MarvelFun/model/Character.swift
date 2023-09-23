@@ -32,6 +32,3 @@ struct Thumbnail: Codable, Hashable {
     let `extension`: String
 }
 
-// struct Comics
-
-// struct series

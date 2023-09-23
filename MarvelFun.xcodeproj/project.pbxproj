@@ -23,6 +23,8 @@
 		B3C4F80A2ABF095B00E75C7D /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4F8092ABF095B00E75C7D /* Event.swift */; };
 		B3C4F80C2ABF0B2300E75C7D /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4F80B2ABF0B2300E75C7D /* EventView.swift */; };
 		B3C4F80F2ABF207500E75C7D /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3C4F80E2ABF207500E75C7D /* Configuration.plist */; };
+		B3C4F8132ABF744A00E75C7D /* CharacterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4F8122ABF744A00E75C7D /* CharacterTests.swift */; };
+		B3C4F8142ABF780500E75C7D /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4F7FA2ABE36B000E75C7D /* Character.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,7 @@
 		B3C4F8092ABF095B00E75C7D /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		B3C4F80B2ABF0B2300E75C7D /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		B3C4F80E2ABF207500E75C7D /* Configuration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
+		B3C4F8122ABF744A00E75C7D /* CharacterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				B3C4F7DD2ABE308F00E75C7D /* MarvelFunTests.swift */,
+				B3C4F8122ABF744A00E75C7D /* CharacterTests.swift */,
 			);
 			path = MarvelFunTests;
 			sourceTree = "<group>";
@@ -328,7 +332,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3C4F8142ABF780500E75C7D /* Character.swift in Sources */,
 				B3C4F7DE2ABE308F00E75C7D /* MarvelFunTests.swift in Sources */,
+				B3C4F8132ABF744A00E75C7D /* CharacterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

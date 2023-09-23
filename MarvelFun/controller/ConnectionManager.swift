@@ -36,9 +36,6 @@ class ConnectionManager: ObservableObject {
                         do {
                             let results = try decoder.decode(CharacterResults.self, from: safeData)
                             DispatchQueue.main.async {
-                                // TODO: Remove debug print statements
-                                // print(results.data.count)
-                                // print(results.data.results)
                                 for result in results.data.results {
                                     self.characterResults.append(result)
                                 }
@@ -68,9 +65,6 @@ class ConnectionManager: ObservableObject {
                         do {
                             let results = try decoder.decode(ComicResults.self, from: safeData)
                             DispatchQueue.main.async {
-                                // TODO: Remove debug print statements
-                                print(results.data.count)
-                                print(results.data.results)
                                 self.comicResults = results.data.results
                             }
                         } catch {
@@ -96,9 +90,6 @@ class ConnectionManager: ObservableObject {
                         do {
                             let results = try decoder.decode(EventResults.self, from: safeData)
                             DispatchQueue.main.async {
-                                // TODO: Remove debug print statements
-                                print(results.data.count)
-                                print(results.data.results)
                                 self.eventResults = results.data.results
                             }
                         } catch {
