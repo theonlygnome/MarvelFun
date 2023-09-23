@@ -10,6 +10,7 @@ import Foundation
 class ConnectionManager: ObservableObject {
     @Published var characterResults = [Character]()
     @Published var comicResults = [Comic]()
+    @Published var seriesResults = [Series]()
     
     let baseURL = "https://gateway.marvel.com:443/v1/public/characters"
     let publicAPIKey = "e2719ae4bb577096eccd880b3764a76a"
@@ -70,6 +71,37 @@ class ConnectionManager: ObservableObject {
                                 print(results.data.count)
                                 print(results.data.results)
                                 self.comicResults = results.data.results
+                            }
+                        } catch {
+                            print(error)
+                        }
+                    }
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    func fetchSeriesData(_ id: Int) {
+        //md5(ts+privateKey+publicKey)
+        //let hashString = "1"+privateAPIKey+publicAPIKey
+        //let md5Hash = hashString.MD5
+        
+        let urlString = "\(baseURL)/\(String(id))/series?ts=1&apikey=\(publicAPIKey)&hash=\(hash)"
+        print(urlString)
+        if let url = URL(string: urlString) {
+            let session = URLSession(configuration: .default)
+            let task = session.dataTask(with: url) { (data, response, error) in
+                if error == nil {
+                    let decoder = JSONDecoder()
+                    if let safeData = data {
+                        do {
+                            let results = try decoder.decode(SeriesResults.self, from: safeData)
+                            DispatchQueue.main.async {
+                                // TODO: Remove debug print statements
+                                print(results.data.count)
+                                print(results.data.results)
+                                self.seriesResults = results.data.results
                             }
                         } catch {
                             print(error)
