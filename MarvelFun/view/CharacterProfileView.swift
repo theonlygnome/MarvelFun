@@ -46,7 +46,7 @@ struct CharacterProfileView: View {
                 Button(action: {selected = 1}, label: {
                     VStack {
                         Image(systemName: selected == 1 ? "tv.fill" : "tv")
-                        Text(String(connectionManager.seriesResults.count))
+                        Text(String(connectionManager.eventResults.count))
                     }
                 })
                 .padding(30)
@@ -56,12 +56,12 @@ struct CharacterProfileView: View {
             if (selected == 0) {
                 ComicsView(comics: connectionManager.comicResults)
             } else {
-                SeriesView(series: connectionManager.seriesResults)
+                EventView(events: connectionManager.eventResults)
             }
         }
         .onAppear {
             self.connectionManager.fetchComicData(character.id)
-            self.connectionManager.fetchSeriesData(character.id)
+            self.connectionManager.fetchEventData(character.id)
         }
     }
     

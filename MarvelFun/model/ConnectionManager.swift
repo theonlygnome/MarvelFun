@@ -10,7 +10,7 @@ import Foundation
 class ConnectionManager: ObservableObject {
     @Published var characterResults = [Character]()
     @Published var comicResults = [Comic]()
-    @Published var seriesResults = [Series]()
+    @Published var eventResults = [Event]()
     
     let baseURL = "https://gateway.marvel.com:443/v1/public/characters"
     let publicAPIKey = "e2719ae4bb577096eccd880b3764a76a"
@@ -82,12 +82,12 @@ class ConnectionManager: ObservableObject {
         }
     }
     
-    func fetchSeriesData(_ id: Int) {
+    func fetchEventData(_ id: Int) {
         //md5(ts+privateKey+publicKey)
         //let hashString = "1"+privateAPIKey+publicAPIKey
         //let md5Hash = hashString.MD5
         
-        let urlString = "\(baseURL)/\(String(id))/series?ts=1&apikey=\(publicAPIKey)&hash=\(hash)"
+        let urlString = "\(baseURL)/\(String(id))/events?ts=1&apikey=\(publicAPIKey)&hash=\(hash)"
         print(urlString)
         if let url = URL(string: urlString) {
             let session = URLSession(configuration: .default)
@@ -96,12 +96,12 @@ class ConnectionManager: ObservableObject {
                     let decoder = JSONDecoder()
                     if let safeData = data {
                         do {
-                            let results = try decoder.decode(SeriesResults.self, from: safeData)
+                            let results = try decoder.decode(EventResults.self, from: safeData)
                             DispatchQueue.main.async {
                                 // TODO: Remove debug print statements
                                 print(results.data.count)
                                 print(results.data.results)
-                                self.seriesResults = results.data.results
+                                self.eventResults = results.data.results
                             }
                         } catch {
                             print(error)
