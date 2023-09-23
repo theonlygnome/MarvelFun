@@ -14,6 +14,9 @@
 		B3C4F7DE2ABE308F00E75C7D /* MarvelFunTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4F7DD2ABE308F00E75C7D /* MarvelFunTests.swift */; };
 		B3C4F7E82ABE308F00E75C7D /* MarvelFunUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4F7E72ABE308F00E75C7D /* MarvelFunUITests.swift */; };
 		B3C4F7EA2ABE308F00E75C7D /* MarvelFunUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4F7E92ABE308F00E75C7D /* MarvelFunUITestsLaunchTests.swift */; };
+		B3C4F7F72ABE30CE00E75C7D /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4F7F62ABE30CE00E75C7D /* ConnectionManager.swift */; };
+		B3C4F7FB2ABE36B000E75C7D /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4F7FA2ABE36B000E75C7D /* Character.swift */; };
+		B3C4F7FD2ABE3AE900E75C7D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C4F7FC2ABE3AE900E75C7D /* String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,10 @@
 		B3C4F7E32ABE308F00E75C7D /* MarvelFunUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelFunUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3C4F7E72ABE308F00E75C7D /* MarvelFunUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelFunUITests.swift; sourceTree = "<group>"; };
 		B3C4F7E92ABE308F00E75C7D /* MarvelFunUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelFunUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B3C4F7F62ABE30CE00E75C7D /* ConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
+		B3C4F7FA2ABE36B000E75C7D /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		B3C4F7FC2ABE3AE900E75C7D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		B3C4F8002ABE673100E75C7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +101,9 @@
 		B3C4F7CB2ABE308C00E75C7D /* MarvelFun */ = {
 			isa = PBXGroup;
 			children = (
-				B3C4F7CC2ABE308C00E75C7D /* MarvelFunApp.swift */,
-				B3C4F7CE2ABE308C00E75C7D /* ContentView.swift */,
+				B3C4F8002ABE673100E75C7D /* Info.plist */,
+				B3C4F7F82ABE30D400E75C7D /* model */,
+				B3C4F7F92ABE30E100E75C7D /* view */,
 				B3C4F7D02ABE308F00E75C7D /* Assets.xcassets */,
 				B3C4F7D22ABE308F00E75C7D /* Preview Content */,
 			);
@@ -125,6 +133,25 @@
 				B3C4F7E92ABE308F00E75C7D /* MarvelFunUITestsLaunchTests.swift */,
 			);
 			path = MarvelFunUITests;
+			sourceTree = "<group>";
+		};
+		B3C4F7F82ABE30D400E75C7D /* model */ = {
+			isa = PBXGroup;
+			children = (
+				B3C4F7F62ABE30CE00E75C7D /* ConnectionManager.swift */,
+				B3C4F7FA2ABE36B000E75C7D /* Character.swift */,
+				B3C4F7FC2ABE3AE900E75C7D /* String.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		B3C4F7F92ABE30E100E75C7D /* view */ = {
+			isa = PBXGroup;
+			children = (
+				B3C4F7CC2ABE308C00E75C7D /* MarvelFunApp.swift */,
+				B3C4F7CE2ABE308C00E75C7D /* ContentView.swift */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +285,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3C4F7CF2ABE308C00E75C7D /* ContentView.swift in Sources */,
+				B3C4F7FB2ABE36B000E75C7D /* Character.swift in Sources */,
+				B3C4F7FD2ABE3AE900E75C7D /* String.swift in Sources */,
+				B3C4F7F72ABE30CE00E75C7D /* ConnectionManager.swift in Sources */,
 				B3C4F7CD2ABE308C00E75C7D /* MarvelFunApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -425,6 +455,7 @@
 				DEVELOPMENT_TEAM = A43MNB4Y8U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MarvelFun/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -454,6 +485,7 @@
 				DEVELOPMENT_TEAM = A43MNB4Y8U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MarvelFun/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
