@@ -18,17 +18,17 @@ struct CharacterProfileView: View {
             ZStack {
                 RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
                     .fill(.white)
-                    .shadow(radius: 3)
+                    .shadow(radius: 1)
                 VStack(alignment: .leading) {
                     HStack {
                         Text(character.name)
                         Spacer()
-                        AsyncImage(url: URL(string: character.thumbnail.path + "/standard_large." + character.thumbnail.extension))
+                        AsyncImage(url: URL(string: character.thumbnail.path + "/standard_medium." + character.thumbnail.extension))
                             .clipShape(Circle())
                     }
-                    // TODO: Figure out how to limit to 100 characters
-                    Text(character.description)
-                    
+                    Text(character.description != "" ? character.description : "No description provided.")
+                        .lineLimit(2)
+                        .font(.subheadline)
                 }
                 .padding()
             }
@@ -42,15 +42,17 @@ struct CharacterProfileView: View {
                         Text(String(connectionManager.comicResults.count))
                     }
                 })
-                .foregroundColor(.primary)
+                .padding(30)
                 Button(action: {selected = 1}, label: {
                     VStack {
                         Image(systemName: selected == 1 ? "tv.fill" : "tv")
                         Text(String(connectionManager.seriesResults.count))
                     }
                 })
-                .foregroundColor(.primary)
+                .padding(30)
             }
+            .foregroundColor(.primary)
+            
             if (selected == 0) {
                 ComicsView(comics: connectionManager.comicResults)
             } else {
