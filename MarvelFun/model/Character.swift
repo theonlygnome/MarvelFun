@@ -4,10 +4,9 @@
 //
 //  Created by Naomi Anderson on 9/22/23.
 //
-
 import Foundation
 
-struct Results: Codable {
+struct CharacterResults: Codable {
     let data: CharacterDataContainer
 }
 
