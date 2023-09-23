@@ -31,6 +31,11 @@ struct CharacterIndexView: View {
                         // Hide the 'back' text on the subview backbutton to just show the chevron
                         .navigationTitle("")
                     }
+                    ProgressView()
+                        .progressViewStyle(.circular)
+                        .onAppear {
+                            self.connectionManager.loadMoreCharacters()
+                        }
                 }
             }
         }

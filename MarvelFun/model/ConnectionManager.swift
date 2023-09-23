@@ -12,6 +12,9 @@ class ConnectionManager: ObservableObject {
     @Published var comicResults = [Comic]()
     @Published var eventResults = [Event]()
     
+    private var page = 0
+    private let limit = 20
+    
     let baseURL = "https://gateway.marvel.com:443/v1/public/characters"
     let publicAPIKey = "e2719ae4bb577096eccd880b3764a76a"
     
@@ -19,12 +22,17 @@ class ConnectionManager: ObservableObject {
     let hash = "148b6d3244e70bf5f8840cdcc1529639"
     
     
+    func loadMoreCharacters() {
+        fetchCharacterData()
+    }
+    
     func fetchCharacterData() {
         //md5(ts+privateKey+publicKey)
         //let hashString = "1"+privateAPIKey+publicAPIKey
         //let md5Hash = hashString.MD5
         
-        let urlString = "\(baseURL)?ts=1&apikey=\(publicAPIKey)&hash=\(hash)"
+        let offset = page * limit
+        let urlString = "\(baseURL)?ts=1&apikey=\(publicAPIKey)&hash=\(hash)&offset=\(offset)"
         print(urlString)
         if let url = URL(string: urlString) {
             let session = URLSession(configuration: .default)
@@ -38,7 +46,10 @@ class ConnectionManager: ObservableObject {
                                 // TODO: Remove debug print statements
                                 print(results.data.count)
                                 print(results.data.results)
-                                self.characterResults = results.data.results
+                                for result in results.data.results {
+                                    self.characterResults.append(result)
+                                }
+                                self.page += 1
                             }
                         } catch {
                             print(error)
