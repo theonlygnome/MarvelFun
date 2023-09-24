@@ -45,6 +45,6 @@ struct CharacterIndexView: View {
     }
 }
 
-#Preview {
-    CharacterIndexView()
-}
+//#Preview {
+//    CharacterIndexView()
+//}

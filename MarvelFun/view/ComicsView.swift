@@ -25,6 +25,6 @@ struct ComicsView: View {
     }
 }
 
-#Preview {
-    ComicsView(comics: [])
-}
+//#Preview {
+//    ComicsView(comics: [])
+//}

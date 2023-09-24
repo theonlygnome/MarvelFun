@@ -67,6 +67,6 @@ struct CharacterProfileView: View {
     
 }
 
-#Preview {
-    CharacterProfileView(connectionManager: ConnectionManager(), character: Character(id: 0, name: "He-Man", description: "Strong Guy", thumbnail: Thumbnail(path: "http://i.annihil.us/u/prod/marvel/i/mg/9/a0/4ce18a834b7f5", extension: "jpg")))
-}
+//#Preview {
+//    CharacterProfileView(connectionManager: ConnectionManager(), character: Character(id: 0, name: "He-Man", description: "Strong Guy", thumbnail: Thumbnail(path: "http://i.annihil.us/u/prod/marvel/i/mg/9/a0/4ce18a834b7f5", extension: "jpg")))
+//}

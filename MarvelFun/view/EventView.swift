@@ -25,6 +25,6 @@ struct EventView: View {
     }
 }
 
-#Preview {
-    EventView(events: [])
-}
+//#Preview {
+//    EventView(events: [])
+//}
